@@ -31,7 +31,7 @@ public class Keyboard_BlueEyes {
     @After
     public void teardown() {
 
-        driver.quit();
+        //driver.quit();
     }
 
     @Test
@@ -47,6 +47,8 @@ public class Keyboard_BlueEyes {
         //2- Arama kutusuna actions method’larine kullanarak Blue Eyes Katzenklo Matte yazdirin ve Enter’a basarak arama yaptirin
         WebElement aramaKutusu = driver.findElement(By.id("twotabsearchtextbox"));
         //aramaKutusu.sendKeys("Blue Eyes Katzenklo Matte"+ Keys.ENTER);
+
+
 
         actions
                 .click(aramaKutusu)
@@ -68,6 +70,8 @@ public class Keyboard_BlueEyes {
                 .sendKeys("atte ")
                 .sendKeys(Keys.ENTER)
                 .perform();
+
+
         ReusableMethods.bekle(5);
 
         //WebElement kategori=driver.findElement(By.xpath("(//h2[@class='a-size-mini a-spacing-none a-color-base s-line-clamp-4'])[2]"));
