@@ -2,6 +2,7 @@ package elif;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -29,6 +30,16 @@ public class N04_booking {
     public void tearDown(){
         driver.quit();
     }
+
+    /*
+    // driverimiz ile ilgili kurulumlari baslatalim
+    // https://www.booking.com/ sayfasina gidelim
+   // para birimi olarak TL secelim
+    // ulke olarak Turkiye yi secelim
+   // sayfanin en altindan ulkeler kismini secelim
+    // ulkeler sayfasindan turkiye yi secelim
+   // turkiye sayfasinin secildigini test edin
+     */
 
     @Test
     public void booking() throws InterruptedException {
@@ -69,6 +80,17 @@ public class N04_booking {
         WebElement ulkeler= driver.findElement(By.xpath("(//a[@data-ga='seoindexlinks'])[1]"));
         ulkeler.click();
 
+        //ulkeler sayfasindan turkiye yi secelim
+        WebElement Turkiye= driver.findElement(By.xpath("(//div[@class='block_header'])[43]"));
+        booking.scrollToElement(Turkiye).click(Turkiye).perform();
+
+        // turkiye sayfasinin secildigini test edin
+        //Assert.assertTrue(Turkiye.isDisplayed());
+
+        WebElement TR=driver.findElement(By.xpath("//a[normalize-space()='Türkiye']"));
+        String actual=TR.getText();
+        String exp= "Türkiye";
+        Assert.assertEquals(exp,actual);
 
     }
 }
